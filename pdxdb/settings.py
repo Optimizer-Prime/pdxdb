@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pdx',
 ]
 
 MIDDLEWARE = [
@@ -133,5 +134,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Override production settings if DJANGO_DEVELOPMENT env variable is true
+# export DJANGO_DEVELOPMENT=true
 if os.environ.get('DJANGO_DEVELOPMENT'):
-    from dev_settings import *
+    from .dev_settings import *  # import error without .
