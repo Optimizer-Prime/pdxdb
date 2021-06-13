@@ -127,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -135,5 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Override production settings if DJANGO_DEVELOPMENT env variable is true
 # export DJANGO_DEVELOPMENT=true
+# keep this at end of file
 if os.environ.get('DJANGO_DEVELOPMENT'):
     from .dev_settings import *  # import error without .
