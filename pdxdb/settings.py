@@ -153,7 +153,7 @@ LOGGING = {
     'root': {'level': 'INFO'},
 }
 
-# Override production settings if DJANGO_DEVELOPMENT env variable is true
+# Overrides production settings if DJANGO_DEVELOPMENT env variable is true
 # export DJANGO_DEVELOPMENT=true
 # keep this at end of file
 if os.environ.get('DJANGO_DEVELOPMENT'):
