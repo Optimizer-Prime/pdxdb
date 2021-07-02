@@ -4,8 +4,8 @@ from django.db import models
 class Pdx(models.Model):
     """Defines all required and desired info for a PDX model."""
 
-    # required info
     # for more detailed info on each field, refer to the docs
+
     # patient info
     SEXES = [
         ('M', 'Male'),
@@ -57,6 +57,32 @@ class Pdx(models.Model):
     model_id = models.CharField(max_length=100, unique=True)
 
     # PDX model details
+    host_strain = models.CharField(max_length=250)
+    host_strain_full = models.TextField()
+    engraftment_site = models.CharField(max_length=250)
+    engraftment_type = models.CharField(max_length=250)
+    sample_type = models.CharField(max_length=250)
+    sample_state = models.CharField(blank=True, null=True, max_length=250)
+    passage_number = models.CharField(max_length=250)
+    publications = models.TextField()
 
+    # PDX model validation
+    validation_technique = models.TextField()
+    validation_description = models.TextField()
+    passages_validated = models.CharField(max_length=250)
+    validation_host_strain_full = models.TextField()
 
-    # desired info
+    # sharing and contact
+    ACCESS_MODALITY = [
+        ('Transnational access', 'Transnational access'),
+        ('Collaboration only', 'Collaboration only'),
+    ]
+    provider_type = models.CharField(max_length=250)
+    model_accessibility = models.CharField(max_length=250)
+    europdx_access_modality = models.CharField(max_length=20, choices=ACCESS_MODALITY)
+    contact_email = models.EmailField()
+    contact_name = models.CharField(max_length=250)
+    provider_name = models.CharField(max_length=250)
+    provider_abbreviation = models.CharField(max_length=50)
+    project_name = models.CharField(max_length=250)
+
