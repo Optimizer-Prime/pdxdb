@@ -1,6 +1,6 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column, Fieldset
+from crispy_forms.layout import Layout, Submit, Row, Column, Fieldset, Reset
 
 from .models import Pdx
 
@@ -134,7 +134,8 @@ class PdxForm(forms.ModelForm):
                          Column('project_name', css_class='form-group col-md-3 mb-0'),
                      )
                      ),
-            Submit('submit', 'Submit'))
+            Submit('submit', 'Submit'),
+            Reset('reset', 'Reset', css_class='btn-danger'))
 
         # patient info section of models.py
         self.fields['patient_id'].widget.attrs['placeholder'] = PATIENT_ID_PLACEHOLDER

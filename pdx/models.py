@@ -13,7 +13,6 @@ class Pdx(models.Model):
         ('not specified', 'Not specified'),
     ]
     ETHNICITY_ASSESSMENT = [
-        ('', ''),
         ('self assessed', 'Self assessed'),
         ('genetic data', 'Genetic data'),
     ]
@@ -56,7 +55,7 @@ class Pdx(models.Model):
     grading_system = models.CharField(blank=True, null=True, max_length=250)
     virology_status = models.TextField(blank=True, null=True)
     treatment_info_shareable = models.CharField(max_length=3, choices=SHAREABLE)
-    treatment_naive_at_collection = models.CharField(max_length=100, choices=TREATMENT_NAIVE)
+    treatment_naive_at_collection = models.CharField(max_length=13, choices=TREATMENT_NAIVE)
     treated = models.CharField(max_length=13, choices=TREATED_OPTIONS)
     prior_treatment = models.CharField(max_length=13, choices=TREATED_OPTIONS)
 
