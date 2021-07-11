@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import validate_comma_separated_integer_list
 
 
 class Pdx(models.Model):
@@ -67,13 +68,13 @@ class Pdx(models.Model):
     engraftment_type = models.CharField(max_length=250)
     sample_type = models.CharField(max_length=250)
     sample_state = models.CharField(blank=True, null=True, max_length=250)
-    passage_number = models.CharField(max_length=250)
+    passage_number = models.CharField(max_length=250, validators=[validate_comma_separated_integer_list])
     publications = models.TextField()
 
     # PDX model validation
     validation_techniques = models.TextField()
     validation_description = models.TextField()
-    passages_validated = models.CharField(max_length=250)
+    passages_validated = models.CharField(max_length=250, validators=[validate_comma_separated_integer_list])
     validation_host_strain_full = models.TextField()
 
     # sharing and contact
@@ -89,4 +90,5 @@ class Pdx(models.Model):
     provider_name = models.CharField(max_length=50)
     provider_abbreviation = models.CharField(max_length=10)
     project_name = models.CharField(max_length=100)
+
 
