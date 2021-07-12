@@ -6,8 +6,14 @@
 
 <div class="container" style="padding-top: 10px; padding-bottom: 10px; height: 1000px; text-align: center">
 <br>
-<h3>Your PDX model has been successfully submitted to pdxdb.</h3>
-<p></p>
+<img src="/static/images/blue_success.png" alt="success-blue" height="256" width="256">
+<h3 style="padding-top: 50px">Your PDX model has been successfully submitted to pdxdb!</h3>
+    <br>
+    <a href="#" class="btn btn-primary">View your model</a>
+    <br><br>
+    <a href="{% url 'submit' %}" class="btn btn-primary">Submit another model</a>
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-primary">Go to homepage</a>
 </div>
 
 {% endblock content %}
