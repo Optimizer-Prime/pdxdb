@@ -69,7 +69,7 @@ class Pdx(models.Model):
     sample_type = models.CharField(max_length=250)
     sample_state = models.CharField(blank=True, null=True, max_length=250)
     passage_number = models.CharField(max_length=250, validators=[validate_comma_separated_integer_list])
-    publications = models.TextField()
+    publications = models.TextField(blank=True, null=True)
 
     # PDX model validation
     validation_techniques = models.TextField()

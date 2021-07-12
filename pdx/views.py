@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
 from .forms import PdxForm
 
 
@@ -7,8 +8,19 @@ def homePageView(request):
     return render(request, 'home.html')
 
 
+def modelSubmittedView(request):
+    return render(request, 'model_submitted.html')
+
+
 def submitModelsView(request):
-    pdx_form = PdxForm()
+    if request.method == 'POST':
+        pdx_form = PdxForm(request.POST)
+        if pdx_form.is_valid():
+            pdx_form.save()
+            return redirect('model_submitted.html', permanent=True)
+    else:
+        pdx_form = PdxForm()
+
     context = {
         'pdx_form': pdx_form,
     }

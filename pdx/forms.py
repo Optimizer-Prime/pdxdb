@@ -136,6 +136,7 @@ class PdxForm(forms.ModelForm):
                      ),
             Submit('submit', 'Submit'),
             Reset('reset', 'Reset', css_class='btn-danger'))
+        self.helper.form_method = 'POST'
 
         # patient info section of models.py
         self.fields['patient_id'].widget.attrs['placeholder'] = PATIENT_ID_PLACEHOLDER
@@ -185,18 +186,7 @@ class PdxForm(forms.ModelForm):
 
     class Meta:
         model = Pdx
-        fields = ['patient_id', 'patient_sex', 'patient_ethnicity', 'patient_history',
-                  'initial_diagnosis', 'ethnicity_assessment_method', 'age_at_initial_diagnosis',
-                  'sample_id', 'collection_date', 'collection_event', 'months_since_collection_one',
-                  'age_in_years_at_collection', 'diagnosis', 'diagnosis_notes', 'tumor_type',
-                  'primary_site', 'collection_site', 'stage', 'staging_system', 'grade',
-                  'grading_system', 'virology_status', 'treatment_info_shareable', 'treatment_naive_at_collection',
-                  'treated', 'prior_treatment', 'model_id', 'host_strain', 'host_strain_full',
-                  'engraftment_site', 'engraftment_type', 'sample_type', 'sample_state', 'passage_number',
-                  'publications', 'validation_techniques', 'validation_description', 'passages_validated',
-                  'validation_host_strain_full', 'provider_type', 'model_accessibility',
-                  'europdx_access_modality', 'contact_email', 'contact_name', 'provider_name',
-                  'provider_abbreviation', 'project_name', ]
+        fields = '__all__'
         help_texts = {'sample_id': UNIQUE, 'model_id': UNIQUE,
                       'validation_techniques': 'List all that apply. Separate with comma.',
                       'validation_description': 'Must be clear if model is validated or not.',
