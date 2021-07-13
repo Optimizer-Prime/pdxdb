@@ -1,5 +1,4 @@
-from django.views.generic import DetailView
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.http import Http404
 
 from .forms import PdxForm
@@ -50,5 +49,4 @@ def pdx_detail_view(request, model_id):
     context = {
         'detail': data,
     }
-    return render(request, 'model_detail.html', context=context)
-
+    return render(request, 'model_detail.html', context)

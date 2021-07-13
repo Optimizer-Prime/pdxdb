@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Pdx
 
-# Register your models here.
+
+class PdxAdmin(admin.ModelAdmin):
+    pdx = '__all__'
+
+    admin.site.register(Pdx)
+

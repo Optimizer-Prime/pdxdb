@@ -91,4 +91,5 @@ class Pdx(models.Model):
     provider_abbreviation = models.CharField(max_length=10)
     project_name = models.CharField(max_length=100)
 
-
+    def __str__(self):
+        return self.model_id
