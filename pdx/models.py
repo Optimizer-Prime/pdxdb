@@ -61,7 +61,7 @@ class Pdx(models.Model):
     prior_treatment = models.CharField(max_length=13, choices=TREATED_OPTIONS)
 
     # PDX model details
-    model_id = models.CharField(max_length=100, unique=True)
+    model_id = models.CharField(primary_key=True, max_length=100, unique=True)
     host_strain = models.CharField(max_length=250)
     host_strain_full = models.TextField()
     engraftment_site = models.CharField(max_length=250)
