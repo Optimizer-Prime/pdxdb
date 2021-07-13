@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',  # TODO: activate Django template cache folder
     'crispy_bootstrap5',
+    'widget_tweaks',
+    'rest_framework',
     'pdx',
 ]
 

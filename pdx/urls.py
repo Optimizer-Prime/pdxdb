@@ -1,13 +1,13 @@
 from django.urls import path
 from .views import (
-    homePageView, submitModelsView, modelSubmittedView, dataView, dataDetailView
+    homepage, submit_model, model_submitted, pdx_list, pdx_detail
 )
 
 
 urlpatterns = [
-    path('', homePageView, name='home'),
-    path('submit/', submitModelsView, name='submit'),
-    path('submit/model_submitted.html', modelSubmittedView, name='model_submitted'),
-    path('data/', dataView, name='data'),
-    path('data/<pk>/', dataDetailView, name='data_detail'),
+    path('', homepage, name='home'),
+    path('submit/', submit_model, name='submit'),
+    path('submit/model_submitted.html', model_submitted, name='model_submitted'),
+    path('data/', pdx_list, name='data'),
+    path('data/<pk>/', pdx_detail, name='model_detail'),
 ]

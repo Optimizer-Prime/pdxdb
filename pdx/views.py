@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PdxForm
+from .filters import PdxFilter
 from .models import Pdx
 
 
-def homePageView(request):
+def homepage(request):
     return render(request, 'home.html')
 
 
-def modelSubmittedView(request):
+def model_submitted(request):
     return render(request, 'model_submitted.html')
 
 
-def submitModelsView(request):
+def submit_model(request):
     if request.method == 'POST':
         pdx_form = PdxForm(request.POST)
         if pdx_form.is_valid():
@@ -26,19 +27,21 @@ def submitModelsView(request):
     return render(request, 'submit.html', context)
 
 
-def dataView(request, **kwargs):
+def pdx_list(request, **kwargs):
     data = Pdx.objects.all()
+    data_filter = PdxFilter(request.GET, queryset=data)
 
     context = {
-        'data': data,
+        'data': data_filter,
     }
     return render(request, 'data.html', context)
 
 
-def dataDetailView(request, pk):
-    detail = Pdx.objects.filter(pk=pk)
+def pdx_detail(request, pk):
+    data = Pdx.objects.all()
+    detail = get_object_or_404(data, pk=pk)
 
     context = {
         'detail': detail,
     }
-    return render(request, 'data_detail.html', context)
+    return render(request, 'model_detail.html', context)

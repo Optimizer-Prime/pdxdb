@@ -2,31 +2,75 @@
 <html lang="en">
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 
 <div class="container-fluid" style="padding-top: 20px; width: 90%">
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Model ID</th>
-                <th scope="col">Diagnosis</th>
-                <th scope="col">Primary</th>
-                <th scope="col">Collection</th>
-                <th scope="col">Type</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for model in data %}
-            <tr>
-                <th scope="row">{{ model.model_id }}</th>
-                <td>{{ model.diagnosis }}</td>
-                <td>{{ model.primary_site }}</td>
-                <td>{{ model.collection_site }}</td>
-                <td>{{ model.tumor_type }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <form method="get">
+            <div class="well">
+                <h4 style="margin-top: 0">Filter PDX Models</h4>
+                <div class="row" style="padding-bottom: 10px;">
+                    <div class="form-group col-md-3">
+                        {{ data.form.diagnosis.label_tag }}
+                        {% render_field data.form.diagnosis class="form-control" %}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ data.form.tumor_type.label_tag }}
+                        {% render_field data.form.tumor_type class="form-control" %}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ data.form.primary_site.label_tag }}
+                        {% render_field data.form.primary_site class="form-control" %}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ data.form.collection_site.label_tag }}
+                        {% render_field data.form.collection_site class="form-control" %}
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 10px;">
+                    <div class="form-group col-md-3">
+                        {{ data.form.engraftment_site.label_tag }}
+                        {% render_field data.form.engraftment_site class="form-control" %}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{ data.form.engraftment_type.label_tag }}
+                        {% render_field data.form.engraftment_type class="form-control" %}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid" style="padding-top: 10px;">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Model ID</th>
+                    <th scope="col">Diagnosis</th>
+                    <th scope="col">Primary</th>
+                    <th scope="col">Collection</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!-- the .qs refers to the filter queryset defined in filters.py -->
+            {% for model in data.qs %}
+                <tr>
+                    <th scope="row"><a href="{% url 'model_detail' pk=model.pk %}">
+                        {{ model.model_id }} {{ model.pk }}</a></th>
+                    <td>{{ model.diagnosis }}</td>
+                    <td>{{ model.primary_site }}</td>
+                    <td>{{ model.collection_site }}</td>
+                    <td>{{ model.tumor_type }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock content %}
