@@ -1,18 +1,22 @@
+from django.views.generic import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
+
 from .forms import PdxForm
 from .filters import PdxFilter
 from .models import Pdx
+from .serializers import PdxSerializer
 
 
-def homepage(request):
+def homepage_view(request):
     return render(request, 'home.html')
 
 
-def model_submitted(request):
+def model_submitted_view(request):
     return render(request, 'model_submitted.html')
 
 
-def submit_model(request):
+def submit_model_view(request):
     if request.method == 'POST':
         pdx_form = PdxForm(request.POST)
         if pdx_form.is_valid():
@@ -27,7 +31,7 @@ def submit_model(request):
     return render(request, 'submit.html', context)
 
 
-def pdx_list(request, **kwargs):
+def pdx_list_view(request, **kwargs):
     data = Pdx.objects.all()
     data_filter = PdxFilter(request.GET, queryset=data)
 
@@ -37,11 +41,14 @@ def pdx_list(request, **kwargs):
     return render(request, 'data.html', context)
 
 
-def pdx_detail(request, pk):
-    data = Pdx.objects.all()
-    detail = get_object_or_404(data, pk=pk)
+def pdx_detail_view(request, model_id):
+    try:
+        data = Pdx.objects.get(model_id=model_id)  # model_id is the primary key
+    except Pdx.DoesNotExist:
+        raise Http404('Pdx model does not exist.')
 
     context = {
-        'detail': detail,
+        'detail': data,
     }
-    return render(request, 'model_detail.html', context)
+    return render(request, 'model_detail.html', context=context)
+

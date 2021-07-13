@@ -60,8 +60,8 @@
             <!-- the .qs refers to the filter queryset defined in filters.py -->
             {% for model in data.qs %}
                 <tr>
-                    <th scope="row"><a href="{% url 'model_detail' pk=model.pk %}">
-                        {{ model.model_id }} {{ model.pk }}</a></th>
+                    <th scope="row"><a href="{% url 'model_detail' model_id=model.model_id %}">
+                        {{ model.model_id }}</a></th>
                     <td>{{ model.diagnosis }}</td>
                     <td>{{ model.primary_site }}</td>
                     <td>{{ model.collection_site }}</td>

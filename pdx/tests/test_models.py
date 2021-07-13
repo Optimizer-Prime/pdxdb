@@ -55,7 +55,7 @@ class PdxModelTest(TestCase):
                            provider_abbreviation='SU', project_name='PDX project', )
 
     def return_test_data(self):
-        pdx = Pdx.objects.get(id=1)
+        pdx = Pdx.objects.get(model_id='ABC_001')
         return pdx
 
     def test_patient_id_label(self):
