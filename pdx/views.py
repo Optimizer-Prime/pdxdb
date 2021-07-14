@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.http import Http404
 
@@ -33,20 +34,32 @@ def submit_model_view(request):
 def pdx_list_view(request, **kwargs):
     data = Pdx.objects.all()
     data_filter = PdxFilter(request.GET, queryset=data)
+    data_list = data_filter.qs
+
+    paginator = Paginator(data_list, 15)
+    page_number = request.GET.get('page')
+
+    try:
+        data_list = paginator.page(page_number)
+    except PageNotAnInteger:
+        data_list = paginator.page(1)
+    except EmptyPage:
+        data_list = paginator.page(page_number.num_pages)
 
     context = {
-        'data': data_filter,
+        'data_filter': data_filter,
+        'data_list': data_list,
     }
     return render(request, 'data.html', context)
 
 
 def pdx_detail_view(request, model_id):
     try:
-        data = Pdx.objects.get(model_id=model_id)  # model_id is the primary key
+        detail = Pdx.objects.get(model_id=model_id)  # model_id is the primary key
     except Pdx.DoesNotExist:
         raise Http404('Pdx model does not exist.')
 
     context = {
-        'detail': data,
+        'detail': detail,
     }
     return render(request, 'model_detail.html', context)
