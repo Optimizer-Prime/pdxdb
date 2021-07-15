@@ -4,9 +4,184 @@
 
 {% block content %}
 
-<div class="container-fluid" style="padding-top: 20px; width: 90%">
-    {{ detail.model_id }}
-    {{ detail.diagnosis }}
+<div class="container" style="padding-top: 40px; width: 90%; height: 100px;">
+    <div class="d-flex justify-content-between">
+        <div class="col-md-4">
+            <h2>{{ detail.model_id }}</h2>
+        </div>
+        <div class="col-md-4">
+            <h3>Patient-Derived Model Details</h3>
+        </div>
+        <div class="col-md-4">
+            <div class="float-end">
+                <div class="row">
+                    <a href="mailto:{{ detail.contact_email }}" class="btn btn-primary" role="button"
+                    style="padding-left: 40px; padding-right: 40px;">
+                    Contact Provider
+                </a>
+                </div>
+                <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                    <a href="#" class="btn btn-primary" role="button">
+                    View Model Data
+                </a>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container" style="padding-top: 20px;">
+    <div class="border-5 border-top border-primary" style="padding-top: 10px;"></div>
+</div>
+<div class="container" style="padding-top: 20px;">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-model-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-model" type="button" role="tab" aria-controls="nav-model"
+                    aria-selected="true">
+                PDX Model
+            </button>
+            <button class="nav-link" id="nav-patient-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-patient" type="button" role="tab" aria-controls="nav-patient"
+                    aria-selected="false">
+                Patient Info
+            </button>
+            <button class="nav-link" id="nav-molecular-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-molecular" type="button" role="tab" aria-controls="nav-molecular"
+                    aria-selected="false">
+                Molecular Data
+            </button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-model" role="tabpanel" aria-labelledby="nav-model-tab">
+            <div class="container" style="padding-top: 20px;">
+                <h4>PDX Model Engraftment</h4>
+                <div class="container">
+                    <div class="border-1 border-top border-primary" style="padding-top: 10px;"></div>
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead class="table-">
+                        <tr>
+                            <th scope="col">Host Strain Name</th>
+                            <th scope="col">Site</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Sample</th>
+                            <th scope="col">Sample State</th>
+                            <th scope="col">Passage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ detail.host_strain }}</td>
+                            <td>{{ detail.engraftment_site }}</td>
+                            <td>{{ detail.engraftment_type }}</td>
+                            <td>{{ detail.sample_type }}</td>
+                            <td>{{ detail.sample_state }}</td>
+                            <td>{{ detail.passage_number }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container" style="padding-top: 20px;">
+                <h4>Model Validation</h4>
+                <div class="container">
+                    <div class="border-1 border-top border-primary" style="padding-top: 10px;"></div>
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead class="table">
+                        <tr>
+                            <th scope="col">Technique</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Passage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ detail.validation_techniques }}</td>
+                            <td>{{ detail.validation_description }}</td>
+                            <td>{{ detail.passages_validated }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-patient" role="tabpanel" aria-labelledby="nav-patient-tab">
+            <div class="container" style="padding-top: 20px;">
+                <h4>Patient Info</h4>
+                <div class="container">
+                    <div class="border-1 border-top border-primary" style="padding-top: 10px;"></div>
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead class="table-">
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Sex</th>
+                            <td>{{ detail.get_patient_sex_display }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ethnicity</th>
+                            <td>{{ detail.patient_ethnicity }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Derived Model</th>
+                            <td>{{ detail.model_id }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container" style="padding-top: 20px;">
+                <h4>Patient Tumor at Collection for PDX Model</h4>
+                <div class="container">
+                    <div class="border-1 border-top border-primary" style="padding-top: 10px;"></div>
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead class="table">
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Age</th>
+                            <td>{{ detail.age_in_years_at_collection }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Collection Date</th>
+                            <td>{{ detail.collection_date }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Diagnosis</th>
+                            <td>{{ detail.diagnosis }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tumor Type</th>
+                            <td>{{ detail.tumor_type }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Primary Site</th>
+                            <td>{{ detail.primary_site }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Collection Site</th>
+                            <td>{{ detail.collection_site }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Grade</th>
+                            <td>{{ detail.grade }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Stage</th>
+                            <td>{{ detail.stage }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-molecular" role="tabpanel" aria-labelledby="nav-molecular-tab">
+            placeholder
+        </div>
+    </div>
 </div>
 
 {% endblock content %}
