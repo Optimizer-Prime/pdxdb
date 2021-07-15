@@ -40,6 +40,11 @@ PROVIDER_NAME_PLACEHOLDER = 'university, company'
 UNIQUE = 'Must be unique.'
 STRAIN_LOOKUP = "Look up <a href='http://www.informatics.jax.org/home/strain' " \
                 "target='_blank' rel='noopener noreferrer'>here.</a>"
+PASSAGES_HELP_TEXT = 'Comma seperated list of passage numbers.'
+COLLECTION_EVENT_HELP_TEXT = 'If collection date entered, leave blank.'
+VALIDATION_TECHNIQUES_HELP_TEXT = 'List all that apply. Separate with comma.'
+VALIDATION_DESCRIPTION_HELP_TEXT = 'Must be clear if model is validated or not.'
+VIROLOGY_STATUS_HELP_TEXT = 'List all viruses the patient tested positive for. Provide full name. Separate with comma.'
 
 
 class PdxForm(forms.ModelForm):
@@ -187,12 +192,11 @@ class PdxForm(forms.ModelForm):
     class Meta:
         model = Pdx
         fields = '__all__'
-        help_texts = {'sample_id': UNIQUE, 'model_id': UNIQUE,
-                      'validation_techniques': 'List all that apply. Separate with comma.',
-                      'validation_description': 'Must be clear if model is validated or not.',
-                      'passage_number': 'Comma seperated list of passage numbers.',
-                      'collection_event': 'If collection date entered, leave blank.',
-                      'virology_status': 'List all viruses the patient tested positive for. Provide full name. '
-                                         'Separate with comma.',
+        help_texts = {'sample_id': UNIQUE, 'collection_event': COLLECTION_EVENT_HELP_TEXT,
+                      'model_id': UNIQUE, 'validation_techniques': VALIDATION_TECHNIQUES_HELP_TEXT,
+                      'validation_description': VALIDATION_DESCRIPTION_HELP_TEXT,
+                      'passage_number': PASSAGES_HELP_TEXT,
+                      'passages_validated': PASSAGES_HELP_TEXT,
+                      'virology_status': VIROLOGY_STATUS_HELP_TEXT,
                       'host_strain_full': STRAIN_LOOKUP, 'validation_host_strain_full': STRAIN_LOOKUP,
                       }
