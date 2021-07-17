@@ -29,7 +29,7 @@ PUBLICATIONS_PLACEHOLDER = 'Provide comma separated list of any publications mod
 # pdx model validation
 VALIDATION_TECHNIQUES_PLACEHOLDER = 'e.g. fingerprinting, histology, immunohistochemistry'
 VALIDATION_DESCRIPTION_PLACEHOLDER = 'high, good, moderate concordance'
-PASSAGES_PLACEHOLDER = 'e.g. 0, 1, 2'
+PASSAGES_PLACEHOLDER = 'e.g. 0,1,2'
 
 # sharing and contact
 PROVIDER_TYPE_PLACEHOLDER = 'e.g. academia, CRO, pharma'
@@ -40,7 +40,7 @@ PROVIDER_NAME_PLACEHOLDER = 'university, company'
 UNIQUE = 'Must be unique.'
 STRAIN_LOOKUP = "Look up <a href='http://www.informatics.jax.org/home/strain' " \
                 "target='_blank' rel='noopener noreferrer'>here.</a>"
-PASSAGES_HELP_TEXT = 'Comma seperated list of passage numbers.'
+PASSAGES_HELP_TEXT = 'Comma seperated list, no spaces between numbers.'
 COLLECTION_EVENT_HELP_TEXT = 'If collection date entered, leave blank.'
 VALIDATION_TECHNIQUES_HELP_TEXT = 'List all that apply. Separate with comma.'
 VALIDATION_DESCRIPTION_HELP_TEXT = 'Must be clear if model is validated or not.'

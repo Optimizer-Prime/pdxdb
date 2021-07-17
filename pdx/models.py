@@ -6,6 +6,7 @@ class Pdx(models.Model):
     """Defines all required and desired info for a PDX model."""
 
     # for more detailed info on each field, refer to the docs
+    # model_id is primary key
 
     # patient info
     SEXES = [
