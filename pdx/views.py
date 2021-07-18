@@ -63,6 +63,7 @@ def pdx_detail_view(request, model_id):
     :param request:
     :param model_id: passed from url for desired model.
     """
+
     try:
         detail = Pdx.objects.get(model_id=model_id)  # model_id is the primary key
     except Pdx.DoesNotExist:
