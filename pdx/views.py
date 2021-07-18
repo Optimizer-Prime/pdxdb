@@ -13,10 +13,12 @@ def homepage_view(request):
 
 
 def model_submitted_view(request):
+    """Displays after successfully posting PdxForm."""
     return render(request, 'model_submitted.html')
 
 
 def submit_model_view(request):
+    """View for displaying and saving PdxForm."""
     if request.method == 'POST':
         pdx_form = PdxForm(request.POST)
         if pdx_form.is_valid():
@@ -32,6 +34,7 @@ def submit_model_view(request):
 
 
 def pdx_list_view(request, **kwargs):
+    """View for displaying all PDX models saved to database, and search form."""
     data = Pdx.objects.all()
     data_filter = PdxFilter(request.GET, queryset=data)
     data_list = data_filter.qs
@@ -54,6 +57,12 @@ def pdx_list_view(request, **kwargs):
 
 
 def pdx_detail_view(request, model_id):
+    """
+    Displays detailed info about a specific PDX model.
+
+    :param request:
+    :param model_id: passed from url for desired model.
+    """
     try:
         detail = Pdx.objects.get(model_id=model_id)  # model_id is the primary key
     except Pdx.DoesNotExist:

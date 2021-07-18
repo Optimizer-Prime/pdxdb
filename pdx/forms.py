@@ -48,6 +48,7 @@ VIROLOGY_STATUS_HELP_TEXT = 'List all viruses the patient tested positive for. P
 
 
 class PdxForm(forms.ModelForm):
+    """Defines layout and field attributes for all fields in Pdx class in models.py"""
 
     def __init__(self, *args, **kwargs):
         super(PdxForm, self).__init__(*args, **kwargs)

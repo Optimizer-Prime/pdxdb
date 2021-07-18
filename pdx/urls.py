@@ -1,6 +1,10 @@
 from django.urls import path
 from .views import (
-    homepage_view, submit_model_view, model_submitted_view, pdx_list_view, pdx_detail_view
+    homepage_view,
+    submit_model_view,
+    model_submitted_view,
+    pdx_list_view,
+    pdx_detail_view,
 )
 
 
