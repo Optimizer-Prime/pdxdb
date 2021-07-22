@@ -95,3 +95,9 @@ class Pdx(models.Model):
 
     def __str__(self):
         return self.model_id
+
+
+class HistologyImages(models.Model):
+
+    pdx = models.ForeignKey(Pdx, on_delete=models.CASCADE)
+    image = models.ImageField()
