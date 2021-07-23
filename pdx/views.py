@@ -5,7 +5,6 @@ from django.http import Http404
 from .forms import PdxForm
 from .filters import PdxFilter
 from .models import Pdx
-from .serializers import PdxSerializer
 
 
 def homepage_view(request):
@@ -13,12 +12,16 @@ def homepage_view(request):
 
 
 def model_submitted_view(request):
-    """Displays after successfully posting PdxForm."""
+    """
+    Displays after successfully posting PdxForm.
+    """
     return render(request, 'model_submitted.html')
 
 
 def submit_model_view(request):
-    """View for displaying and saving PdxForm."""
+    """
+    View for displaying and saving PdxForm.
+    """
     if request.method == 'POST':
         pdx_form = PdxForm(request.POST)
         if pdx_form.is_valid():
@@ -34,7 +37,9 @@ def submit_model_view(request):
 
 
 def pdx_list_view(request, **kwargs):
-    """View for displaying all PDX models saved to database, and search form."""
+    """
+    View for displaying all PDX models saved to database, and search form.
+    """
     data = Pdx.objects.all()
     data_filter = PdxFilter(request.GET, queryset=data)
     data_list = data_filter.qs

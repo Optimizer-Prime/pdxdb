@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     # local
     'pdx',
+    'api',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'

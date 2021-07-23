@@ -2,6 +2,10 @@ from django.db import models
 from django.core.validators import validate_comma_separated_integer_list
 
 
+# def get_histology_path(instance, filename):
+#     return
+
+
 class Pdx(models.Model):
     """Defines most required and desired info for a PDX model. Images are defined in another
     model and linked via ForeignKey."""
@@ -97,7 +101,7 @@ class Pdx(models.Model):
         return self.model_id
 
 
-class HistologyImages(models.Model):
-
-    pdx = models.ForeignKey(Pdx, on_delete=models.CASCADE)
-    image = models.ImageField()
+# class HistologyImages(models.Model):
+#
+#     pdx = models.ForeignKey(Pdx, on_delete=models.CASCADE)
+#     image = models.ImageField(max_length=100, blank=True, name=True)

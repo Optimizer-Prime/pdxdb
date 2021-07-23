@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Pdx
+from pdx.models import Pdx
 
 
 class PdxSerializer(serializers.ModelSerializer):
