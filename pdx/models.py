@@ -7,8 +7,10 @@ from django.core.validators import validate_comma_separated_integer_list
 
 
 class Pdx(models.Model):
-    """Defines most required and desired info for a PDX model. Images are defined in another
-    model and linked via ForeignKey."""
+    """
+    Defines most required and desired info for a PDX model. Images are defined in another
+    model and linked via ForeignKey.
+    """
 
     # for more detailed info on each field, refer to the docs
     # model_id is primary key

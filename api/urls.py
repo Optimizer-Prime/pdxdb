@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import PdxAPIView
+from .views import PdxListView, PdxDetailView
 
 
 urlpatterns = [
-    path('', PdxAPIView.as_view()),
+    path('<str:pk>/', PdxDetailView.as_view()),
+    path('', PdxListView.as_view()),
 ]
