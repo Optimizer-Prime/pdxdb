@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # 3rd party
     'crispy_forms',  # TODO: activate Django template cache folder
@@ -52,6 +53,12 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
 
     # local
     'pdx',
@@ -61,9 +68,18 @@ INSTALLED_APPS = [
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Must specify since using 'django.contrib.sites'
+SITE_ID = 1
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
