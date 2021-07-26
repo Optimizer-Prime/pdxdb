@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import validate_comma_separated_integer_list
 
 
@@ -14,6 +15,8 @@ class Pdx(models.Model):
 
     # for more detailed info on each field, refer to the docs
     # model_id is primary key
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # patient info
     SEXES = [

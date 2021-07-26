@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import PdxListView, PdxDetailView
+from rest_framework.routers import SimpleRouter
+from .views import PdxViewSet
 
 
-urlpatterns = [
-    path('<str:pk>/', PdxDetailView.as_view()),
-    path('', PdxListView.as_view()),
-]
+router = SimpleRouter()
+router.register('', PdxViewSet, basename='posts')
+
+urlpatterns = router.urls
