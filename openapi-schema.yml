@@ -1,0 +1,762 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/v1/:
+    get:
+      operationId: listPdxs
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pdx'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createPdx
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pdx'
+          description: ''
+      tags:
+      - api
+  /api/v1/{model_id}/:
+    get:
+      operationId: retrievePdx
+      description: ''
+      parameters:
+      - name: model_id
+        in: path
+        required: true
+        description: A unique value identifying this pdx.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pdx'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updatePdx
+      description: ''
+      parameters:
+      - name: model_id
+        in: path
+        required: true
+        description: A unique value identifying this pdx.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pdx'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdatePdx
+      description: ''
+      parameters:
+      - name: model_id
+        in: path
+        required: true
+        description: A unique value identifying this pdx.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pdx'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pdx'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyPdx
+      description: ''
+      parameters:
+      - name: model_id
+        in: path
+        required: true
+        description: A unique value identifying this pdx.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/logout/:
+    get:
+      operationId: listLogouts
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createLogout
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/user/:
+    get:
+      operationId: retrieveUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/password/reset/:
+    post:
+      operationId: createPasswordReset
+      description: 'Calls Django Auth PasswordResetForm save method.
+
+
+        Accepts the following POST parameters: email
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordReset'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/password/reset/confirm/:
+    post:
+      operationId: createPasswordResetConfirm
+      description: "Password reset e-mail link is confirmed, therefore\nthis resets\
+        \ the user's password.\n\nAccepts the following POST parameters: token, uid,\n\
+        \    new_password1, new_password2\nReturns the success/fail message."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetConfirm'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/login/:
+    post:
+      operationId: createLogin
+      description: 'Check the credentials and return the REST Token
+
+        if the credentials are valid and authenticated.
+
+        Calls Django Auth login method to register User ID
+
+        in Django session framework
+
+
+        Accept the following POST parameters: username, password
+
+        Return the REST Framework Token Object''s key.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/password/change/:
+    post:
+      operationId: createPasswordChange
+      description: 'Calls Django Auth SetPasswordForm save method.
+
+
+        Accepts the following POST parameters: new_password1, new_password2
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChange'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/registration/:
+    post:
+      operationId: createRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+      tags:
+      - api
+  /api/v1/dj-rest-auth/registration/verify-email/:
+    post:
+      operationId: createVerifyEmail
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyEmail'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    Pdx:
+      type: object
+      properties:
+        model_id:
+          type: string
+          maxLength: 100
+        patient_id:
+          type: string
+          maxLength: 200
+        patient_sex:
+          enum:
+          - M
+          - F
+          - not specified
+          type: string
+        patient_history:
+          type: string
+          nullable: true
+        patient_ethnicity:
+          type: string
+          nullable: true
+          maxLength: 100
+        ethnicity_assessment_method:
+          enum:
+          - self assessed
+          - genetic data
+          type: string
+          nullable: true
+        initial_diagnosis:
+          type: string
+          nullable: true
+        age_at_initial_diagnosis:
+          type: integer
+          nullable: true
+        sample_id:
+          type: string
+          maxLength: 250
+        collection_date:
+          type: string
+          format: date
+          nullable: true
+        collection_event:
+          type: string
+          nullable: true
+          maxLength: 250
+        months_since_collection_one:
+          type: integer
+          nullable: true
+        age_in_years_at_collection:
+          type: integer
+        diagnosis:
+          type: string
+        diagnosis_notes:
+          type: string
+          nullable: true
+        tumor_type:
+          type: string
+          maxLength: 100
+        primary_site:
+          type: string
+          maxLength: 250
+        collection_site:
+          type: string
+          maxLength: 250
+        stage:
+          type: string
+          nullable: true
+          maxLength: 30
+        staging_system:
+          type: string
+          nullable: true
+          maxLength: 250
+        grade:
+          type: string
+          nullable: true
+          maxLength: 30
+        grading_system:
+          type: string
+          nullable: true
+          maxLength: 250
+        virology_status:
+          type: string
+          nullable: true
+        treatment_info_shareable:
+          enum:
+          - Y
+          - N
+          type: string
+        treatment_naive_at_collection:
+          enum:
+          - naive
+          - not naive
+          - not specified
+          type: string
+        treated:
+          enum:
+          - Y
+          - N
+          - unknown
+          type: string
+        prior_treatment:
+          enum:
+          - Y
+          - N
+          - unknown
+          type: string
+        host_strain:
+          type: string
+          maxLength: 250
+        host_strain_full:
+          type: string
+        engraftment_site:
+          type: string
+          maxLength: 250
+        engraftment_type:
+          type: string
+          maxLength: 250
+        sample_type:
+          type: string
+          maxLength: 250
+        sample_state:
+          type: string
+          nullable: true
+          maxLength: 250
+        passage_number:
+          type: string
+          pattern: ^\d+(?:,\d+)*\z
+          maxLength: 250
+        publications:
+          type: string
+          nullable: true
+        validation_techniques:
+          type: string
+        validation_description:
+          type: string
+        passages_validated:
+          type: string
+          pattern: ^\d+(?:,\d+)*\z
+          maxLength: 250
+        validation_host_strain_full:
+          type: string
+        provider_type:
+          type: string
+          maxLength: 250
+        model_accessibility:
+          type: string
+          maxLength: 250
+        europdx_access_modality:
+          enum:
+          - transnational
+          - collaboration
+          type: string
+        contact_email:
+          type: string
+          format: email
+          maxLength: 254
+        contact_name:
+          type: string
+          maxLength: 50
+        provider_name:
+          type: string
+          maxLength: 50
+        provider_abbreviation:
+          type: string
+          maxLength: 10
+        project_name:
+          type: string
+          maxLength: 100
+        author:
+          type: integer
+      required:
+      - model_id
+      - patient_id
+      - patient_sex
+      - sample_id
+      - age_in_years_at_collection
+      - diagnosis
+      - tumor_type
+      - primary_site
+      - collection_site
+      - treatment_info_shareable
+      - treatment_naive_at_collection
+      - treated
+      - prior_treatment
+      - host_strain
+      - host_strain_full
+      - engraftment_site
+      - engraftment_type
+      - sample_type
+      - passage_number
+      - validation_techniques
+      - validation_description
+      - passages_validated
+      - validation_host_strain_full
+      - provider_type
+      - model_accessibility
+      - europdx_access_modality
+      - contact_email
+      - contact_name
+      - provider_name
+      - provider_abbreviation
+      - project_name
+      - author
+    UserDetails:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - username
+    PasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PasswordResetConfirm:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - new_password1
+      - new_password2
+      - uid
+      - token
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+      - password
+    PasswordChange:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+      required:
+      - new_password1
+      - new_password2
+    Register:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          type: string
+          format: email
+        password1:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password1
+      - password2
+    VerifyEmail:
+      type: object
+      properties:
+        key:
+          type: string
+      required:
+      - key

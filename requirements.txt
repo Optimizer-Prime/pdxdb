@@ -8,6 +8,7 @@ django-filter==2.4.0
 django-widget-tweaks==1.4.8
 Django==3.2.3
 djangorestframework==3.12.4
+drf-yasg==1.20.0
 environs==9.3.2
 httpie==2.4.0
 idna==2.10
@@ -18,9 +19,11 @@ Pygments==2.9.0
 PySocks==1.7.1
 python-dotenv==0.17.1
 pytz==2021.1
+pyyaml==5.4.1
 requests-toolbelt==0.9.1
 requests==2.25.1
 selenium==3.141.0
 setuptools==57.0.0
 sqlparse==0.4.1
+uritemplate==3.0.1
 urllib3==1.26.5
