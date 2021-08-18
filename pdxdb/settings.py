@@ -62,8 +62,8 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     # local
-    'pdx',
-    'api',
+    'pdx.apps.PdxConfig',
+    'api.apps.ApiConfig',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'

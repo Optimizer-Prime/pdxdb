@@ -3,6 +3,7 @@ from rest_framework import permissions
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
 
+    # TODO: seems to POST without being logged in
     def has_object_permission(self, request, view, obj):
         """
         If user is author of Pdx model, they have full CRUD permissions.
