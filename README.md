@@ -1,4 +1,4 @@
-![release](https://img.shields.io/badge/release-v0.5-blue) ![maintained](https://img.shields.io/badge/maintained%3F-Yes-green) ![issues](https://img.shields.io/github/issues/Optimizer-Prime/pdxdb) ![license](https://img.shields.io/github/license/Optimizer-Prime/pdxdb)
+![release](https://img.shields.io/badge/release-v0.5-blue) ![maintained](https://img.shields.io/badge/maintained%3F-No-red) ![issues](https://img.shields.io/github/issues/Optimizer-Prime/pdxdb) ![license](https://img.shields.io/github/license/Optimizer-Prime/pdxdb)
 
 # pdxdb
 An open collection of patient derived xenograft tumor models. 
